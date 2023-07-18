@@ -17,7 +17,7 @@ const Product = ({ product }) => {
   };
 
   return (
-    <div className="w-60 h-96 rounded-sm bg-slate-200 shadow-md overflow-hidden relative">
+    <div className=" w-64 h-96 rounded-sm bg-slate-200 shadow-md overflow-hidden relative">
       <div className="absolute top-2 right-2 hover:text-red-500 hover:scale-125 hover:cursor-pointer">
         <button
           onClick={() => {
@@ -34,12 +34,12 @@ const Product = ({ product }) => {
       </h2>
       <div className="flex p-3 justify-between">
         <div className="flex p-4">
-          <span>prix :</span>
-          <p>{product.price} €</p>
+          <span className="font-semibold p-1">prix</span>
+          <p className="font-bold p-1">{product.price}€</p>
         </div>
         <div className="flex p-4">
-          <span>quantité</span>
-          <p>{product.quantity}</p>
+          <span className="font-semibold p-1">quantité</span>
+          <p className="font-bold p-1">{product.quantity}</p>
         </div>
       </div>
       <button

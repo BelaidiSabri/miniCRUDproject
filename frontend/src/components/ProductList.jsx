@@ -39,19 +39,19 @@ const ProductList = () => {
         <input
           className="w-60 mt-10 p-2 rounded-full bg-gray-100 border border-gray-300 focus:outline-none focus:ring focus:border-blue-500"
           type="text"
-          placeholder="Search..."
+          placeholder="Recherche..."
           onChange={handleSearch}
         />
       </div>
       <div className="container mx-auto py-8">
-        <h1 className="text-2xl font-bold mb-4">Product List</h1>
-        <div className="flex justify-start items-center gap-5">
+        <h1 className="text-2xl font-bold mb-4">Liste de Produits</h1>
+        <div className="flex justify-start flex-wrap items-center gap-5">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
               <Product key={product.id} product={product} />
             ))
           ) : (
-            <h1>Pas de produit .</h1>
+            <h1>Pas de produits .</h1>
           )}
         </div>
       </div>

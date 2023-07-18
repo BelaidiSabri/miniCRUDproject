@@ -42,7 +42,7 @@ const Modal = ({ handleCloseModal, isUpdate, id }) => {
   };
 
   return (
-    <motion.div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-opacity-50 bg-black">
+    <motion.div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-opacity-50 bg-black z-20">
       <motion.div
         className="w-1/4 bg-white rounded-lg shadow-lg"
         initial="hidden"
