@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { getProducts } from "../api/products";
 import Product from "./Product";
 
-const ProductList = () => {
+const ProductList = ({refreshproducts,refresh}) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+    console.log(refreshproducts);
+  }, [refreshproducts]);
 
   const fetchProducts = async () => {
     try {
@@ -24,6 +25,7 @@ const ProductList = () => {
       console.error("Error fetching products:", error);
     }
   };
+
 
   const handleSearch = (event) => {
     const searchQuery = event.target.value.toLowerCase();
@@ -48,7 +50,7 @@ const ProductList = () => {
         <div className="flex justify-start flex-wrap items-center gap-5">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
-              <Product key={product.id} product={product} />
+              <Product key={product.id} product={product} refresh={refresh} />
             ))
           ) : (
             <h1>Pas de produits .</h1>

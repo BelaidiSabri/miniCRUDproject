@@ -6,33 +6,37 @@ import Modal from "../components/Modal";
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isUpdateMode, setIsUpdateMode] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [refreshproducts, setRefreshProducts] = useState(false);
+
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
     setIsUpdateMode(false);
-    setSelectedProduct(null);
   };
 
-  const handleOpenUpdateModal = (product) => {
+  const handleOpenUpdateModal = () => {
     setIsModalOpen(true);
     setIsUpdateMode(true);
-    setSelectedProduct(product);
   };
+
+  const refresh = ()=> {
+    setRefreshProducts(!refreshproducts)
+  }
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    refresh()
   };
+
 
   return (
     <div>
       <Navbar handleOpenModal={handleOpenModal} />
-      <ProductList handleOpenUpdateModal={handleOpenUpdateModal} />
+      <ProductList handleOpenUpdateModal={handleOpenUpdateModal} refresh={refresh} refreshproducts={refreshproducts} />
       {isModalOpen && (
         <Modal
           handleCloseModal={handleCloseModal}
           isUpdate={isUpdateMode}
-          product={selectedProduct}
         />
       )}
     </div>

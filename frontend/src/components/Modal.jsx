@@ -8,8 +8,6 @@ const Modal = ({ handleCloseModal, isUpdate, id }) => {
     price: "",
     quantity: "",
   });
-  console.log("updated product is ", product);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProduct((prevProduct) => ({ ...prevProduct, [name]: value }));
@@ -17,21 +15,23 @@ const Modal = ({ handleCloseModal, isUpdate, id }) => {
 
   const handleSave = async (e) => {
     e.preventDefault(); 
+   
 
     try {
       if (isUpdate) {
         const response = await updateProduct(product, id);
+        handleCloseModal();
+        window.location.reload(false);
         if (response) {
-          console.log("Product updated successfully:", response);
-          window.location.reload();
+          //console.log("Product updated successfully:", response);
         } else {
           console.log("Product update failed");
         }
       } else {
         const response = await addProduct(product);
+        handleCloseModal();
         if (response) {
-          console.log("Product added successfully:", response);
-          window.location.reload();
+          //console.log("Product added successfully:", response);
         } else {
           console.log("Product addition failed");
         }

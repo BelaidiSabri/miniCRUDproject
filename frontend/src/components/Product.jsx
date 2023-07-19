@@ -5,7 +5,7 @@ import bg from "../assets/images/defaultImage.jpg";
 import { deleteProduct } from "../api/products";
 import Modal from "./Modal";
 
-const Product = ({ product }) => {
+const Product = ({ product,refresh}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -22,7 +22,7 @@ const Product = ({ product }) => {
         <button
           onClick={() => {
             deleteProduct(product.id);
-            window.location.reload();
+            refresh();
           }}
         >
           <FontAwesomeIcon icon={faTrash} />
